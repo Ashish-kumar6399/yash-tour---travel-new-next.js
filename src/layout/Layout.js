@@ -3,6 +3,7 @@ import Navbar from './navbar/navbar'
 import Footer from './footer/Footer'
 import Head from 'next/head'
 import UpperNavbar from './navbar/Uppernavbar'
+import Whatsapp from '@/components/Whatsapp'
 
 function Layout({ children }) {
   return (
@@ -21,6 +22,7 @@ function Layout({ children }) {
         <main>{children}</main>
     
         {/* Footer */}
+        <Whatsapp/>    
         <Footer />
     </div>
   )
