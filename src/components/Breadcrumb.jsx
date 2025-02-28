@@ -8,16 +8,18 @@ const Breadcrumbs = () => {
   const pathname = usePathname();
 
   const breadcrumbLinks = useMemo(() => {
+    if (!pathname) return [{ label: "Home", to: "/" }];
+
     const paths = pathname.split("/").filter(Boolean);
     const links = paths.map((path, index) => {
       const linkPath = "/" + paths.slice(0, index + 1).join("/");
       return {
-        label: path.charAt(0).toUpperCase() + path.slice(1),
+        label: decodeURIComponent(path.charAt(0).toUpperCase() + path.slice(1)), // Handle URL encoding
         to: linkPath,
       };
     });
 
-    return [{ label: "Home", to: "/" }, ...links];
+    return [{ label: "Home", to: "/" }, ...(links || [])]; // Ensure links is always an array
   }, [pathname]);
 
   return (
