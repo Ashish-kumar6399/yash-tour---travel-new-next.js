@@ -30,7 +30,7 @@ const tours = [
     duration: "08 Nights/09 Days",
     locations: "Delhi - Agra - Jaipur - Rishikesh - Delhi",
     image: "https://web.archive.org/web/20190813134721im_/https://www.asparkholidays.com/uploads/65004_jaipur1.jpg",
-    link: "/amritsar-golden-triangle"
+    link: "#"
   }
 ];
 
@@ -43,7 +43,7 @@ export default function RajasthanGoldenTriangleTours() {
       <h2 className="text-4xl font-bold">
          Golden <span className="text-orange-500">Triangle Tours</span>
       </h2>
-      <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+      <p className="text-black-600 mt-4 max-w-2xl mx-auto">
         Rajasthan Golden Triangle Tour Packages: One of the most popular tourist circuits in India, encompassing three significant cities: Delhi, Agra, and Jaipur.
       </p>
       <h3 className="text-2xl font-semibold mt-8">List of  Golden Triangle Tours Packages</h3>
@@ -54,8 +54,8 @@ export default function RajasthanGoldenTriangleTours() {
             <img src={tour.image} alt={tour.title} className="w-full h-56 object-cover" />
             <div className="p-4 text-left">
               <h4 className="text-lg font-bold">{tour.title}</h4>
-              <p className="text-gray-500 flex items-center mt-2">📅 {tour.duration}</p>
-              <p className="text-gray-500 flex items-center mt-1">📍 {tour.locations}</p>
+              <p className="text-black-500 flex items-center mt-2">📅 {tour.duration}</p>
+              <p className="text-black-500 flex items-center mt-1">📍 {tour.locations}</p>
               <Link href={tour.link ? `/tour-packages/golden-triangle${tour.link}` : "#"} className="block no-underline">
 
 

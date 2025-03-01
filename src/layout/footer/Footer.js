@@ -44,7 +44,7 @@ export default function Footer() {
         {/* Column 1: About */}
         <div>
           <h3 className="text-lg font-bold mb-4">Yash Tour & Travels</h3>
-          <p className="text-white text-justify text-sm">
+          <p className="text-white text-justify text-md">
             Welcome to Yash Tour & Travels, your trusted partner for
             comfortable, reliable, and affordable journeys. Discover the joy of
             travel with our premium rental services across India.
@@ -54,7 +54,7 @@ export default function Footer() {
         {/* Column 2: Quick Links */}
         <div>
           <h3 className="text-lg font-bold mb-4">QUICK LINKS</h3>
-          <ul className="space-y-2 px-4 text-white text-lg">
+          <ul className="space-y-2  px-0 lg:px-4 text-white text-lg">
             {quickLinks.map((item, index) => (
               <li key={index} className="flex items-center">
                 <FaAngleDoubleRight className="mr-2" />
@@ -97,16 +97,16 @@ export default function Footer() {
       {/* Copyright & Developer Info */}
       <div className="bg-primary text-white text-sm py-4">
         <div className="max-w-7xl mx-auto px-2 lg:px-6 flex flex-col md:flex-row justify-between text-center md:text-left">
-          <p>Copyright © 2025 Yash Tour & Travels. All rights reserved.</p>
-          <p className="text-white">
+          <p  className="text-lg">Copyright © 2025 Yash Tour & Travels. All rights reserved.</p>
+          <p className="text-white text-lg ">
             Designed and Developed by
             <a
               href="https://kanakdrishtiinfo.com/"
               target="_blank"
-              className="text-blue-400 hover:underline"
+              className="text-blue-400 hover:underline  ml-2"
             >
-              {" "}
-              Kanak Drishti Infotech
+              
+                  Kanak Drishti Infotech
             </a>
           </p>
         </div>

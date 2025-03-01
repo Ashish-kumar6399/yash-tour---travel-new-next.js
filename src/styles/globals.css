@@ -1,7 +1,10 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
 
 @theme {
-  --font-sans: var(--font-geist-sans);
+  --font-ashish: 'Fjalla One', sans-serif;
+  --font-sans: 'Roboto', sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-primary: #32064A;
   --color-orange :#e66a1f,;

@@ -56,7 +56,7 @@ export default function KashmirTour() {
       <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Itinerary Section */}
         <div className="md:col-span-2">
-          <h2 className=" text-xl lg:text-3xl font-bold text-[#e42a69]">Kashmir Tour <span className="text-gray-500">🕒 4N/5D</span></h2>
+          <h2 className=" text-xl lg:text-3xl font-bold text-[#e42a69]">Kashmir Tour <span className="text-black-500">🕒 4N/5D</span></h2>
           <h3 className="text-xl font-semibold mt-2">
             Destination Covered: <span className="font-bold">Srinagar - Gulmarg - Pahalgam - Sonamarg</span>
           </h3>
@@ -65,14 +65,14 @@ export default function KashmirTour() {
               <h4 className="bg-white px-4 py-2 font-bold text-orange-600 text-xl rounded-t-md">
                 {item.day}
               </h4>
-              <p className="text-gray-700 mt-2">{item.description}</p>
+              <p className="text-black-700 mt-2">{item.description}</p>
             </div>
           ))}
 
           {/* Package Inclusions */}
           <div className="mt-6 border-2 border-primary p-4 rounded-md">
             <h3 className="text-xl font-bold text-blue-900 border-b-2 border-primary pb-2">PACKAGE INCLUSIONS —</h3>
-            <ul className="list-disc pl-5 mt-2 text-gray-700">
+            <ul className="list-disc pl-5 mt-2 text-black-700">
               {inclusions.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
@@ -82,7 +82,7 @@ export default function KashmirTour() {
           {/* Package Exclusions */}
           <div className="mt-6 border-2 border-primary p-4 rounded-md">
             <h3 className="text-xl font-bold text-blue-900 border-b-2 border-primary pb-2">PACKAGE EXCLUSIONS —</h3>
-            <ul className="list-disc pl-5 mt-2 text-gray-700">
+            <ul className="list-disc pl-5 mt-2 text-black-700">
               {exclusions.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}

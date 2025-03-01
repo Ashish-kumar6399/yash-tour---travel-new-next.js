@@ -9,7 +9,7 @@ export default function AboutSection() {
         <div>
           <h1 className="text-black font-bold text-4xl mb-4"> Yash Tour & Travels
           </h1>
-          <h6 className="text-gray-700 mb-4 text-justify text-lg">
+          <h6 className="text-black-700 mb-4 text-justify text-lg">
             Welcome to Yash Tour & Travels, your trusted partner for
             comfortable, reliable, and affordable journeys. Discover the joy of
             travel with our premium rental services across India.every journey
@@ -24,7 +24,7 @@ export default function AboutSection() {
          
           <Link
             href="/about"
-            className="uppercase font-bold text-gray-800 hover:text-gray-600 px-5 text-lg"
+            className="uppercase font-bold text-black-800 hover:text-black-600 px-5 text-lg"
           >
             Read More...
           </Link>

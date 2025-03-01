@@ -51,7 +51,7 @@ export default function VehicleShowcase() {
                         <div className="bg-[#32064A] text-white text-start px-3 py-2 font-bold text-lg">
                             {vehicle.name}
                         </div>
-                        <div className="p-2 text-gray-700">
+                        <div className="p-2 text-black-700">
                             <ul className="list-disc list-inside">
                                 {vehicle.vehicles.map((car, idx) => (
                                     <li key={idx}>{car}</li>

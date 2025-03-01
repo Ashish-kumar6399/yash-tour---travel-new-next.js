@@ -45,13 +45,13 @@ const ServicesSection = () => {
 
             {/* Description or List */}
             {service.description && (
-              <p className="text-gray-700 mb-4 text-justify text-lg">
+              <p className="text-black-700 mb-4 text-justify text-lg">
                 {service.description}
               </p>
             )}
 
             {service.cities && (
-              <ul className="text-gray-700 mb-4 text-lg text-left  list-inside  w-max m-auto" >
+              <ul className="text-black-700 mb-4 text-lg text-left  list-inside  w-max m-auto" >
                 {service.cities.map((city, i) => (
                   <li key={i}>{city}</li>
                 ))}

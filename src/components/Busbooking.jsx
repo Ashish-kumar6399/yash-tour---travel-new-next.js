@@ -56,7 +56,7 @@ const BusBooking = () => {
                 {/* Left Side - Minivan Booking */}
                 <div>
                     <h2 className="text-2xl font-bold text-center mb-2">ONLINE MINIVAN BOOKING</h2>
-                    <p className="text-center text-gray-600 mb-4">
+                    <p className="text-center text-black-600 mb-4">
                         Book the Best Value luxury Minivan rental service across India for tours, events, and more.
                     </p>
 
@@ -85,7 +85,7 @@ const BusBooking = () => {
                 {/* Right Side - Bus Booking */}
                 <div>
                     <h2 className="text-2xl font-bold text-center mb-2">ONLINE  BUS BOOKING</h2>
-                    <p className="text-center text-gray-600 mb-4">
+                    <p className="text-center text-black-600 mb-4">
                         Book the Best Value luxury Bus & Coach rental service across India for tours, events, and more.
                     </p>
 

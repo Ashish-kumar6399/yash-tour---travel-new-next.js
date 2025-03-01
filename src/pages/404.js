@@ -19,7 +19,7 @@ const NotFound = () => {
           <h2 className="font-bold font-serif font-2xl lg:text-4xl leading-6 mb-4">
             Page is not found!
           </h2>
-          <p className="block text-center text-base font-sans text-gray-600">
+          <p className="block text-center text-base font-sans text-black-600">
             Sorry! This page is not found! Please try again later.
           </p>
 

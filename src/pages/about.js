@@ -40,7 +40,7 @@ const AboutUs = () => {
               ABOUT US
             </h2>
             {aboutSections.map((text, index) => (
-              <p key={index} className="text-gray-700 mb-4 text-justify">
+              <p key={index} className="text-black-700 mb-4 text-justify">
                 {text}
               </p>
             ))}

@@ -112,7 +112,7 @@ const NavLinks = ({ openDropdown, setOpenDropdown, handleDropdownEnter, handleDr
         >
           <Link
             href={item.href}
-            className="text-black hover:text-yellow-500 font-medium flex items-center focus:outline-none md:cursor-pointer w-full text-left"
+            className="text-black hover:text-yellow-500 font-medium flex items-center focus:outline-none md:cursor-pointer w-full text-left font-ashish text-[18px] uppercase"
             onClick={(e) => {
               if (item.submenu) {
                 e.preventDefault();

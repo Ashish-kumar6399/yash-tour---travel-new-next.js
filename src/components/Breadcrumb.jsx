@@ -23,27 +23,29 @@ const Breadcrumbs = () => {
   }, [pathname]);
 
   return (
-    <nav className="bg-gray-100 py-3 px-5 rounded-lg shadow-md w-fit">
-      <ul className="flex items-center text-sm text-gray-600 space-x-2">
+    <div className="w-full overflow-x-auto">
+    <nav className="container bg-gray-100 py-3 px-5 rounded-lg shadow-md w-fit">
+      <ul className="flex items-center text-sm text-black-600 space-x-2">
         {breadcrumbLinks.map((link, index) => (
           <li key={index} className="flex items-center">
             <Link
               href={link.to}
               className={`${
                 index === breadcrumbLinks.length - 1
-                  ? "text-gray-900 font-semibold"
+                  ? "text-black-900 font-semibold"
                   : "text-blue-600 hover:underline"
               }`}
             >
               {link.label}
             </Link>
             {index < breadcrumbLinks.length - 1 && (
-              <span className="mx-2 text-gray-400">/</span>
+              <span className="mx-2 text-black-400">/</span>
             )}
           </li>
         ))}
       </ul>
     </nav>
+  </div>
   );
 };
 

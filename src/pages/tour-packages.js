@@ -39,7 +39,7 @@ export default function GoldenTriangleTours() {
       <h2 className="text-3xl font-bold">
         Tour <span className="text-orange-600">packages</span>
       </h2>
-      <p className="text-gray-600 mt-2">
+      <p className="text-black-600 mt-2">
        
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel condimentum
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel condimentum
@@ -64,7 +64,7 @@ export default function GoldenTriangleTours() {
             />
             <div className="p-4">
               <h4 className="text-lg font-bold text-start">{tour.title}</h4>
-              <p className="text-gray-600 text-start">{tour.description}</p>
+              <p className="text-black-600 text-start">{tour.description}</p>
               <Link href={`/tour-packages/${tour.link}`}>
                 <button className="mt-4 font-bold bg-orange-600 hover:bg-orange-600 text-white px-4 py-2 rounded flex items-center gap-2">
                   VIEW DETAIL →

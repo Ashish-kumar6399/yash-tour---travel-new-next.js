@@ -132,7 +132,7 @@ export default function Cars() {
                                             <Image src={vehicle.image} alt={vehicle.name} layout="fill" objectFit="cover" className="rounded-md" />
                                         </div>
                                         <h6 className="text-lg font-semibold mt-3">{vehicle.name}</h6>
-                                        <p className="text-gray-700 text-sm">{vehicle.description}</p>
+                                        <p className="text-black-700 text-sm">{vehicle.description}</p>
                                         <div className="flex justify-center flex-wrap gap-3 mt-5">
                                             {vehicle.features.map((feature, index) => (
                                                 <div key={index} className="group relative">

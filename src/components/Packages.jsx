@@ -44,20 +44,20 @@ const TourPackagesSection = () => {
             {/* Content Section */}
             <div className="p-4">
               <Link href={tour.link}>
-                <h3 className="text-lg font-bold text-gray-800 cursor-pointer">{tour.title}</h3>
+                <h3 className="text-lg font-bold text-black-800 cursor-pointer">{tour.title}</h3>
               </Link>
-              <p className="text-gray-600 text-sm">{tour.description}</p>
+              <p className="text-black-600 text-sm">{tour.description}</p>
               <p className="text-green-600 font-semibold text-sm mt-1">Best Service Guarantee</p>
 
               {/* Buttons Section */}
               <div className="flex justify-between items-center mt-4">
                 <Link href={tour.link}>
-                  <button className="px-2 md:px-4 py-2 bg-blue-600 text-white text-sm rounded-md hover:bg-blue-800">
+                  <button className="px-3 md:px-4 py-2 bg-blue-600 text-white text-sm rounded-md hover:bg-blue-800">
                     BOOK NOW
                   </button>
                 </Link>
                 <Link href={tour.link}>
-                  <button className="px-2 md:px-4 py-2 bg-[#e66a1f] text-white text-sm rounded-md hover:bg-[#e66a1f]-700">
+                  <button className="px-3 md:px-4 py-2 bg-[#e66a1f] text-white text-sm rounded-md hover:bg-[#e66a1f]-700">
                     DETAIL
                   </button>
                 </Link>
@@ -65,7 +65,7 @@ const TourPackagesSection = () => {
                   href="https://wa.me/yourwhatsappnumber" // Replace with actual WhatsApp number
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-2 md:px-4 py-2 bg-green-500 text-white text-sm rounded-md flex items-center gap-1 hover:bg-green-700"
+                  className="px-3 md:px-4 py-2 bg-green-500 text-white text-sm rounded-md flex items-center gap-1 hover:bg-green-700"
                 >
                   <span>WhatsApp</span>
                 </a>
