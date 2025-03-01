@@ -22,7 +22,7 @@ export default function Travelpackgesslider() {
         <SwiperSlide>
           <div className="relative w-full h-[30vh] md:h-[50vh] lg:h-[75vh]">
             <img
-              src="https://media.cntraveler.com/photos/643d5d0a5722b1af03793a06/16:9/w_2560%2Cc_limit/Dal%2520Lake_GettyImages-1323846766.jpg"
+              src="https://www.haridwarrishikeshtourism.com/tour-packages/golden-triangle-with-rishikesh-trip.jpg"
               alt="Car 2"
               className="w-full h-full object-cover"
             />
@@ -31,7 +31,7 @@ export default function Travelpackgesslider() {
         <SwiperSlide>
           <div className="relative w-full h-[30vh] md:h-[50vh] lg:h-[75vh]">
             <img
-              src="https://www.atterrir.com/wp-content/uploads/2018/01/destinations_ski_inde_gulmarg.jpg"
+              src="https://www.haridwarrishikeshtourism.com/tour-packages/rishikesh-tour-with-golden-triangle.jpg"
               alt="Car 2"
               className="w-full h-full object-cover"
             />
@@ -40,7 +40,7 @@ export default function Travelpackgesslider() {
         <SwiperSlide>
           <div className="relative w-full h-[30vh] md:h-[50vh] lg:h-[75vh]">
             <img
-              src="https://wallpapercave.com/wp/wp9433338.jpg"
+              src="https://www.haridwarrishikeshtourism.com/tour-packages/rishikesh-with-golden-traingle-tour.jpg"
               alt="Car 2"
               className="w-full h-full object-cover"
             />
@@ -49,7 +49,7 @@ export default function Travelpackgesslider() {
         <SwiperSlide>
           <div className="relative w-full h-[30vh] md:h-[50vh] lg:h-[75vh]">
             <img
-              src="https://i.ytimg.com/vi/DWGMqmSUIKo/maxresdefault.jpg"
+              src="https://www.haridwarrishikeshtourism.com/tour-packages/rishikesh-with-golden-traingle-tour-package.jpg"
               alt="Car 2"
               className="w-full h-full object-cover"
             />

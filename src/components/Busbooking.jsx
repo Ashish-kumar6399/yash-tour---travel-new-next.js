@@ -74,7 +74,7 @@ const BusBooking = () => {
                                         />
                                     </div>
                                 </Link>
-                                <div className="bottom-2 left-0 right-0 bg-black bg-opacity-70 text-white text-center py-1 text-sm font-semibold">
+                                <div  className="bottom-2 left-0 right-0 bg-primary bg-opacity-70 text-white text-center py-3 text-lg font-semibold">
                                     {van.name}
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ const BusBooking = () => {
 
                 {/* Right Side - Bus Booking */}
                 <div>
-                    <h2 className="text-2xl font-bold text-center mb-2">ONLINE BUS BOOKING</h2>
+                    <h2 className="text-2xl font-bold text-center mb-2">ONLINE  BUS BOOKING</h2>
                     <p className="text-center text-gray-600 mb-4">
                         Book the Best Value luxury Bus & Coach rental service across India for tours, events, and more.
                     </p>
@@ -103,7 +103,7 @@ const BusBooking = () => {
                                         />
                                     </div>
                                 </Link>
-                                <div className="bottom-2 left-0 right-0 bg-black bg-opacity-70 text-white text-center py-1 text-sm font-semibold">
+                                <div className="bottom-2 left-0 right-0 bg-primary bg-opacity-70 text-white text-center py-3 text-lg font-semibold">
                                     {bus.name}
                                 </div>
                             </div>

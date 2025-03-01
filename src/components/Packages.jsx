@@ -7,7 +7,7 @@ const tourPackages = [
     title: "Golden Triangle",
     description: "Hotel, Breakfast, Transfer, Sightseeing & All Taxes.",
     image: "https://absolutetourism.in/wp-content/uploads/2024/02/golden-triangle-tour-1.jpg",
-    link: "/golden-triangle", // Replace with actual route
+    link: "/tour-packages/golden-triangle", // Replace with actual route
   },
   {
     title: "Kashmir Tour",
