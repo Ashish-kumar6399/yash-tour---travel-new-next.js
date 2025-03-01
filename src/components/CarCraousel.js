@@ -3,14 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
-
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+import toast, { Toaster } from "react-hot-toast";
 
 export default function CarRentalCarousel() {
   const [formData, setFormData] = useState({
@@ -18,20 +16,56 @@ export default function CarRentalCarousel() {
     email: "",
     mobile: "",
     description: "",
-    validation: "",
+    Passengers: "",
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    setLoading(true);
+
+    const toastId = toast.loading("Sending email..."); // Show loading toast
+
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      setLoading(false);
+
+      if (data.success) {
+        toast.success("Email sent successfully!", {
+          id: toastId, // Update the loading toast
+          duration: 5000,
+          style: {
+            border: "1px solid #4CAF50",
+            padding: "16px",
+            color: "#4CAF50",
+          },
+        });
+        setFormData({ name: "", email: "", mobile: "", description: "", Passengers: "" });
+      } else {
+        toast.error("Failed to send email. Try again.", { id: toastId });
+      }
+    } catch (error) {
+      toast.error("Error sending email. Try again later.", { id: toastId });
+    }
   };
 
   return (
-    <div className="relative w-full ">
+    <div className="relative w-full">
+      <Toaster position="top-center" reverseOrder={false} /> {/* Toaster Component */}
+
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
@@ -147,10 +181,8 @@ export default function CarRentalCarousel() {
         </SwiperSlide>
       </Swiper>
 
-      <div className="  hidden lg:block absolute top-80  md:top-16 md:right-10 bg-black p-4 text-white w-full md:w-96 z-40 rounded">
-        <h3 className="text-lg font-bold border-b-2 border-[#e66a1f] pb-2 mb-4">
-          Quick Enquiry
-        </h3>
+      <div className="hidden lg:block absolute top-80 md:top-16 md:right-10 bg-black p-4 text-white w-full md:w-96 z-40 rounded">
+        <h3 className="text-lg font-bold border-b-2 border-[#e66a1f] pb-2 mb-4">Quick Enquiry</h3>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
@@ -158,6 +190,8 @@ export default function CarRentalCarousel() {
             placeholder="Name"
             className="w-full p-2 bg-white text-black"
             onChange={handleChange}
+            value={formData.name}
+            required
           />
           <input
             type="email"
@@ -165,6 +199,8 @@ export default function CarRentalCarousel() {
             placeholder="Email ID"
             className="w-full p-2 bg-white text-black"
             onChange={handleChange}
+            value={formData.email}
+            required
           />
           <input
             type="tel"
@@ -172,25 +208,31 @@ export default function CarRentalCarousel() {
             placeholder="Mobile No"
             className="w-full p-2 bg-white text-black"
             onChange={handleChange}
+            value={formData.mobile}
+            required
           />
           <textarea
             name="description"
-            placeholder="Description"
+            placeholder="Message"
             className="w-full p-2 bg-white text-black"
             onChange={handleChange}
+            value={formData.description}
           ></textarea>
           <input
             type="text"
-            name="validation"
-            placeholder="Enter Validation"
+            name="Passengers"
+            placeholder="Number of Passengers"
             className="w-full p-2 bg-white text-black"
             onChange={handleChange}
+            value={formData.Passengers}
+            required
           />
           <button
             type="submit"
-            className="w-full bg-[#e66a1f] text-white text-lg p-2 font-bold"
+            className="w-full bg-[#e66a1f] text-white text-lg p-2 font-bold disabled:bg-gray-400"
+            disabled={loading}
           >
-            SEND
+            {loading ? "Sending..." : "SEND"}
           </button>
         </form>
       </div>
