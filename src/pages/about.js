@@ -1,7 +1,10 @@
 "use client";
-import Breadcrumbs from "@/components/Breadcrumb";
+
+import { useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
+import axios from "axios";
 import Layout from "@/layout/Layout";
-import React from "react";
+import Breadcrumbs from "@/components/Breadcrumb";
 
 const aboutSections = [
   "Journeys. Discover the joy of travel with our premium rental services across India. Every journey is a promise of memories that last a lifetime. As your premier travel companion, we are dedicated to providing you with comfortable, reliable, and affordable travel solutions. Our mission is to make your voyages across India's diverse landscapes as seamless and enjoyable as possible.",
@@ -13,82 +16,80 @@ const aboutSections = [
   "Our commitment to excellence has earned us the trust of countless travelers, families, corporate clients, and tourists from around the world. Their testimonials speak volumes about their satisfying experiences and the bonds we've built over the years.",
 ];
 
-const formFields = [
-  { type: "text", placeholder: "Name Please" },
-  { type: "text", placeholder: "Phone No" },
-  { type: "email", placeholder: "Email ID" },
-  { type: "text", placeholder: "Country Name" },
-  // { type: "date", placeholder: "From Date" },
-  { type: "date", placeholder: "To Date" },
-  { type: "number", placeholder: "Number of Persons" },
-];
-
 const AboutUs = () => {
-  return (
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    country: "",
+    toDate: "",
+    persons: "",
+    itinerary: "",
+  });
   
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await axios.post("/api/sendEmail", formData);
+      toast.success(response.data.message, { duration: 4000, style: { background: "#4caf50", color: "white" } });
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        country: "",
+        toDate: "",
+        persons: "",
+        itinerary: "",
+      });
+    } catch (error) {
+      toast.error("Error sending message. Please try again.", { duration: 4000, style: { background: "#f44336", color: "white" } });
+    }
+
+    setLoading(false);
+  };
+
+  return (
     <Layout>
-    <div className="text-black">
-      
-      <Breadcrumbs/>
-
-      {/* Main Layout Container */}
-      <div className="bg-white text-black py-10">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8">
-          {/* Left Section - About Us Text */}
-          <div className="lg:w-2/3">
-            <h2 className="text-2xl font-bold border-b-2 border-black pb-2 mb-4">
-              ABOUT US
-            </h2>
-            {aboutSections.map((text, index) => (
-              <p key={index} className="text-black-700 mb-4 text-justify">
-                {text}
-              </p>
-            ))}
-          </div>
-
-          {/* Right Section - Contact Us Form */}
-          <div className="lg:w-1/3 bg-black text-white p-6 rounded-md shadow-lg">
-            <h3 className="text-lg font-bold border-b pb-2 mb-4">
-              CONTACT US NOW
-            </h3>
-            <form className="space-y-3">
-              {formFields.map((field, index) => (
-                <input
-                  key={index}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  className="w-full px-3 py-2 border rounded-md bg-white text-black"
-                />
+      <Toaster position="top-center" reverseOrder={false} />
+      <div className="text-black">
+        <Breadcrumbs />
+        <div className="bg-white text-black py-10">
+          <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8">
+            <div className="lg:w-2/3">
+              <h2 className="text-2xl font-bold border-b-2 border-black pb-2 mb-4">ABOUT US</h2>
+              {aboutSections.map((text, index) => (
+                <p key={index} className="text-black-700 mb-4 text-justify">{text}</p>
               ))}
-              <textarea
-                placeholder="Tour Itinerary"
-                className="w-full px-3 py-2 border rounded-md bg-white text-black h-20"
-              ></textarea>
-              <input
-                type="text"
-                placeholder="Enter Validation"
-                className="w-full px-3 py-2 border rounded-md bg-white text-black"
-              />
+            </div>
 
-              {/* Captcha & Button */}
-              <div className="flex items-center justify-between">
-                <input
-                  type="text"
-                  value="248"
-                  className="w-16 px-3 py-2 border rounded-md bg-white text-black text-center"
-                  disabled
-                />
-                <button className="w-full bg-[#e66a1f] text-black font-bold py-2 rounded-md hover:bg-yellow-600 ml-2">
-                  SEND
+            <div className="lg:w-1/3 bg-black text-white p-6 rounded-md shadow-lg">
+              <h3 className="text-lg font-bold border-b pb-2 mb-4">CONTACT US NOW</h3>
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <input type="text" name="name" placeholder="Name Please" value={formData.name} onChange={handleChange} className="w-full px-3 py-2 border rounded-md bg-white text-black" required />
+                <input type="text" name="phone" placeholder="Phone No" value={formData.phone} onChange={handleChange} className="w-full px-3 py-2 border rounded-md bg-white text-black" required />
+                <input type="email" name="email" placeholder="Email ID" value={formData.email} onChange={handleChange} className="w-full px-3 py-2 border rounded-md bg-white text-black" required />
+                <input type="text" name="country" placeholder="Country Name" value={formData.country} onChange={handleChange} className="w-full px-3 py-2 border rounded-md bg-white text-black" required />
+                <input type="date" name="toDate" value={formData.toDate} onChange={handleChange} className="w-full px-3 py-2 border rounded-md bg-white text-black" required />
+                <input type="number" name="persons" placeholder="Number of Persons" value={formData.persons} onChange={handleChange} className="w-full px-3 py-2 border rounded-md bg-white text-black" required />
+                <textarea name="itinerary" placeholder="Tour Itinerary" value={formData.itinerary} onChange={handleChange} className="w-full px-3 py-2 border rounded-md bg-white text-black h-20" required></textarea>
+                
+                <button type="submit" className="w-full bg-[#e66a1f] text-black font-bold py-2 rounded-md hover:bg-yellow-600" disabled={loading}>
+                  {loading ? "Sending..." : "SEND"}
                 </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </Layout>
-    
   );
 };
 

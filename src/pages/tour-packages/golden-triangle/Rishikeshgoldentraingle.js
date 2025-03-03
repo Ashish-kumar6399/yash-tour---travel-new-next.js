@@ -2,8 +2,8 @@
 import Breadcrumbs from "@/components/Breadcrumb";
 import Travelpackgesslider from "@/components/tourpackages/Tourpackagesslider";
 import Layout from "@/layout/Layout";
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const itinerary = [
   {
@@ -47,19 +47,54 @@ const exclusions = [
 ];
 
 export default function KashmirTour() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    passengers: "",
+    date: "",
+    message: "",
+    package: "",
+  });
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", phone: "", passengers: "", date: "", message: "", package: "" });
+      } else {
+        toast.error("Failed to send message. Try again later.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <Layout>
-
-    
+      <Toaster position="top-center" reverseOrder={false} />
       <Travelpackgesslider />
-      <Breadcrumbs/>
+      <Breadcrumbs />
       <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        
         {/* Itinerary Section */}
         <div className="md:col-span-2">
-          <h2 className=" text-xl lg:text-3xl font-bold text-[#e42a69]">Kashmir Tour <span className="text-black-500">🕒 4N/5D</span></h2>
+          <h2 className="text-xl lg:text-3xl font-bold text-[#e42a69]">
+            Kashmir Tour <span className="text-black-500">🕒 4N/5D</span>
+          </h2>
           <h3 className="text-xl font-semibold mt-2">
             Destination Covered: <span className="font-bold">Srinagar - Gulmarg - Pahalgam - Sonamarg</span>
           </h3>
+
           {itinerary.map((item, index) => (
             <div key={index} className="mt-6 border-4 border-primary p-4 rounded-md">
               <h4 className="bg-white px-4 py-2 font-bold text-orange-600 text-xl rounded-t-md">
@@ -91,24 +126,27 @@ export default function KashmirTour() {
         </div>
 
         {/* Contact Form Section */}
-        <div className="bg-gray-300 p-6  rounded-md shadow-md">
+        <div className="p-6 rounded-md shadow-md">
           <h3 className="text-2xl font-bold bg-orange-600 text-white py-2 px-4 rounded-t-md">Contact Us</h3>
-          <form className="mt-4">
-            <input type="text" placeholder="Enter your name" className="w-full p-2 border rounded mt-2" />
-            <input type="email" placeholder="Enter your email" className="w-full p-2 border rounded mt-2" />
-            <input type="text" placeholder="Enter your mobile number" className="w-full p-2 border rounded mt-2" />
-            <input type="text" placeholder="Numbers of passenger" className="w-full p-2 border rounded mt-2" />
-            <input type="date" placeholder="Numbers of passenger" className="w-full p-2 border rounded mt-2" />
-            <textarea placeholder="Your message" className="w-full p-2 border rounded mt-2 h-24"></textarea>
-            <select className="w-full p-2 border rounded mt-2">
-              <option>Select a Package</option>
-              <option>Kashmir Tour</option>
-              <option>Gangtok Tour</option>
-              <option>Andaman Tour</option>
-              <option>Kerala Tour</option>
-              <option>Golden Triangle Tour</option>
+          <form className="mt-4" onSubmit={handleSubmit}>
+            <input name="name" type="text" placeholder="Enter your name" className="w-full p-2 border rounded mt-2" onChange={handleChange} value={formData.name} required />
+            <input name="email" type="email" placeholder="Enter your email" className="w-full p-2 border rounded mt-2" onChange={handleChange} value={formData.email} required />
+            <input name="phone" type="text" placeholder="Enter your mobile number" className="w-full p-2 border rounded mt-2" onChange={handleChange} value={formData.phone} required />
+            <input name="passengers" type="text" placeholder="Number of passengers" className="w-full p-2 border rounded mt-2" onChange={handleChange} value={formData.passengers} required />
+            <input name="date" type="date" className="w-full p-2 border rounded mt-2" onChange={handleChange} value={formData.date} required />
+            <textarea name="message" placeholder="Your message" className="w-full p-2 border rounded mt-2 h-24" onChange={handleChange} value={formData.message}></textarea>
+            
+            {/* Select a Package Field */}
+            <select name="package" className="w-full p-2 border rounded mt-2" onChange={handleChange} value={formData.package} required>
+              <option value="">Select a Package</option>
+              <option value="Kashmir Tour">Kashmir Tour</option>
+              <option value="Gangtok Tour">Gangtok Tour</option>
+              <option value="Andaman Tour">Andaman Tour</option>
+              <option value="Kerala Tour">Kerala Tour</option>
+              <option value="Golden Triangle Tour">Golden Triangle Tour</option>
             </select>
-            <button className="w-full mt-4 bg-orange-600 text-white py-2 rounded hover:bg-orange-600">
+
+            <button className="w-full mt-4 bg-orange-600 text-white py-2 rounded hover:bg-orange-700">
               Submit
             </button>
           </form>

@@ -1,7 +1,7 @@
 export default function ContactForm() {
     return (
-        <section className="mb-4">
-            <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
+        <section className="mb-4  px-4 lg:px-20">
+            <div className="container mx-auto  grid grid-cols-1 md:grid-cols-2 gap-10">
                 {/* Contact Form */}
                 <div>
                     <h2 className="text-2xl font-bold text-black mb-6 text-center  underline">Get in touch</h2>
